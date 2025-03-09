@@ -1,6 +1,6 @@
 # 100 DAYS OF GPU CHALLENGE🚀
 
-Welcome to my journey through the 100-day of GPU Challenge! I'll show you 
+Welcome to my journey through the 100-day of GPU Challenge! 
 
 ## Progress Log
 
