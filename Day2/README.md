@@ -1,13 +1,22 @@
 # Compute architecture and scheduling
 
-I learned some basic concepts today, but they provided me with a solid understanding of parallel programming, what to consider in the future to optimize code from both an algorithmic and memory perspective, and the reasons behind these considerations.
+- Threads in the same block --> divided into 32-thread units
+- Block scheduling: threads in the same block are scheduled simultaneously on the same SM. 
+- Thread scheduling: once a block has been assigned to an SM, it is further divided into 32-thread units.
+---
+- `__syncthreads()`: **all threads in a block** must complete a phase of their execution before any of them can move on.
+-  `__syncwarp()`: **all threads in a warp** must complete a phase of their execution before any of them can move on.
+---
+-  Control divergence
+-  How to compute the performance impact of control divergence
+
 
 ## Table of Contents
 1. [Architecture of a modern GPU](#1-architecture-of-a-modern-gpu)
 2. [Block scheduling](#2-block-scheduling)
 3. [Synchronization and transparent scalability](#3-synchronization-and-transparent-scalability)
 4. [Warps and SIMD hardware](#4-warps-and-simd-hardware)
-5. 
+5. [Control divergence](#5-control-divergence)
 
 ## 1. Architecture of a modern GPU
 
@@ -63,4 +72,26 @@ Block consists of multiple dimensions of threads, the dimensions will be project
 
 Threads in the same warp are assigned to the same processing block, which fetched the instruction for the warp and executes it for all threads in the warp at the same time. Those threads apply the same instruction to different portions of the data.
 
-## 
+## 5. Control divergence
+
+### Threads follow different execution paths
+
+When **threads in the same warp** follow different execution paths, we say that these threads exhibit *control divergence*, that is, they diverge in their execution. 
+
+One can determine whether a control construct can result in thread divergence by **inspecting its decision condition**. If the decision is based on `threadIdx` values, the control statement can potentially cause thread divergence.
+
+For example, the statement `if(threadIdx.x > 2) {...}`; `for(i = 0; i < a[threadIdx.x]; i++)`
+
+---
+
+### Reason for control divergence
+
+A prevalent reason for using a control construct with thread control divergence is **handling boundary conditions when mapping threads to data**. 
+
+One-dimensional data: For example, the vector length is 1003 and we pick 64 as the block size. We need to launch 16 thread blocks to process 1003 vector elements. The last 21 threads in thread block 15 from doing work that is not expected or not allowed by the original program. These 16 blocks are partitioned into 32 warps. Only the last warp will have control divergence.
+
+**The performance impact of control divergence decreases as the size of the vectors being processed increases.** 
+
+Two-dimensional data: **The performance impact of control divergence decreases as the number of pixels in the horizontal dimension increases.**
+
+All threads in a warp may not have the same execution timing. Therefore, `__syncwarp()` can ensure **all threads in a warp** must complete a phase of their execution before any of them can move on.
