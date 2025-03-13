@@ -17,6 +17,8 @@
 3. [Synchronization and transparent scalability](#3-synchronization-and-transparent-scalability)
 4. [Warps and SIMD hardware](#4-warps-and-simd-hardware)
 5. [Control divergence](#5-control-divergence)
+6. [Warp scheduling and latency tolerance](#6-warp-scheduling-and-latency-tolerance)
+7. [Resource partitioning and occupancy](#7-resource-partitioning-and-occupancy)
 
 ## 1. Architecture of a modern GPU
 
@@ -95,3 +97,24 @@ One-dimensional data: For example, the vector length is 1003 and we pick 64 as t
 Two-dimensional data: **The performance impact of control divergence decreases as the number of pixels in the horizontal dimension increases.**
 
 All threads in a warp may not have the same execution timing. Therefore, `__syncwarp()` can ensure **all threads in a warp** must complete a phase of their execution before any of them can move on.
+
+## 6. Warp scheduling and latency tolerance
+
+### Latency tolerance
+
+Filling the latency time of operations from some threads with work from other threads. Warp scheduling is also used for tolerating other types of operation latencies, like pipelined floating-point arithmetic and branch instructions.
+
+*Zero-overhead thread scheduling*: The selection of warps that are ready for execution does not introduce any idle or wasted time into the execution timeline.
+
+
+For latency tolerance to be effective, it is desirable for an SM to have many more threads assigned to it that can be simultaneously supported with its execution resources to maximize the chance of finding a warp that is ready to execute at any point in time. This oversubscription of threads to SMs is essential for latency tolerance. **It increases the chances of finding another warp to execute when a currently executing warp encounters a long-latency operation.**
+
+## 7. Resource partitioning and occupancy
+
+*Occupancy*: $$occupancy = \frac{the number of warps assigned to an SM}{the maximum number it supports}$$
+
+### How SM resources are partitioned
+
+
+
+
