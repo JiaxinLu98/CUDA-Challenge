@@ -26,12 +26,11 @@ Consider the following CUDA kernel and the corresponding host function that call
     
 - b. What is the number of warps in the grid?
 
-  - **Ans**: The total number of blocks in the grid is 8 blocks; thus, the total number of warps in the grid is 4 * 8 = 32 warps.
+    - **Ans**: The total number of blocks in the grid is 8 blocks; thus, the total number of warps in the grid is 4 * 8 = 32 warps.
     
 - c. For the statement on line 04:
   -  i. How many warps in the grid are active?
-  
-    -  **Ans**: For condition `threadIdx.x < 40`, 0-39 threads are active, which means there are 2 warps (0-31, 31-39) are active; For condition `threadIdx.x >= 104`, 104-127 threads are active, which means there is only one warp (104-127) is active
+      -  **Ans**: For condition `threadIdx.x < 40`, 0-39 threads are active, which means there are 2 warps (0-31, 31-39) are active; For condition `threadIdx.x >= 104`, 104-127 threads are active, which means there is only one warp (104-127) is active
 Thus total 3 warps are active in a block, for 8 blocks, the total number of warps active is 24.
 
   - ii. How many warps are divergent in the grid?
