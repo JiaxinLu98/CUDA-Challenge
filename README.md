@@ -8,3 +8,4 @@ Welcome to my journey through the 100-day GPU Challenge!
 |:-------:|:------------------------------------------------:|:-----------------------------------------------------------:|:------------------------------------------------------------------------------:|
 |  **1**  | **Introduction to parallel programming**         | **vecAdd.cu**                                               | **PMPP Book: Chapter 1**; **Wing J. Computational Thinking**                   |
 |  **2**  | **Compute architecture and scheduling**          | **color_to_grayscale_conversion.cu**                        | **PMPP Book: Chapter 4**                                                       |
+|  **3**  | **Compute architecture and scheduling**          | **matrixMultiplication.cu**                                 | **PMPP Book: Chapter 4 Exercise**                                              |
