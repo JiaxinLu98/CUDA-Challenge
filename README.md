@@ -11,3 +11,4 @@ Welcome to my journey through the 100-day GPU Challenge!
 |  **3**  | **Compute architecture and scheduling**          | **matrixMultiplication.cu**                                 | **PMPP Book: Chapter 4 Exercise**                                              |
 |  **4**  | **Compute architecture and scheduling**          |                                                             | **PMPP Book: Chapter 5**                                                       |
 |  **5**  | **Compute architecture and scheduling**          | **tiledMatrixMulti.cu**                                     | **PMPP Book: Chapter 5**                                                       |
+|  **6**  | **Compute architecture and scheduling**          | **BoundaryCheckTiledMatrixMulti.cu**                        | **PMPP Book: Chapter 5**                                                       |
