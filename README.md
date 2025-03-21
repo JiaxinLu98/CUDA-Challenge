@@ -14,3 +14,4 @@ Welcome to my journey through the 100-day GPU Challenge!
 |  **6**  | **Compute architecture and scheduling**          | **boundaryCheckTiledMatrixMulti.cu**                        | **PMPP Book: Chapter 5**                                                       |
 |  **7**  | **Multidimensional grids and data**              | **image_blur.cu**                                           | **PMPP Book: Chapter 3**                                                       |
 |  **8**  | **Convolution**                                  | **convolution.cu**                                          | **PMPP Book: Chapter 7**                                                       |
+|  **9**  | **Convolution with constant memory**             | **convolution.cu**                                          | **PMPP Book: Chapter 7**                                                       |
