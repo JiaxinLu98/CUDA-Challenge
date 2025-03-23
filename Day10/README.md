@@ -1,1 +1,1 @@
-![2d_convolution](/2d_convolution.png)
+![2d_convolution](./2d_convolution.png)
