@@ -18,4 +18,4 @@ Welcome to my journey through the 100-day GPU Challenge!
 |  **10** | **Tiled 1D/2D Convolution with cache**           | **2d_convolution.cu**                                       | **PMPP Book: Chapter 7**                                                       |
 |  **11** | **2D Convolution with constant memory**          | **2d_convolution.cu**                                       | **PMPP Book: Chapter 7**                                                       |
 |  **12** | **Tiled 2D Convolution (with cache)**            | **2d_convolution.cu, 2d_convolution.cu (with cache)**       | **PMPP Book: Chapter 7**                                                       |
-
+|  **13** | **Naive stencil, tiled stencil**                 | **stencil.cu, stencil.cu (tiled)**                          | **PMPP Book: Chapter 8**                                                       |
